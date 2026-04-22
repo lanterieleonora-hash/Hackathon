@@ -285,12 +285,12 @@ function updateTelemetry() {
     const signalBox = signalLabel.parentElement;
     const viewCanvas = document.getElementById('view');
 
-    if (sVal <= -80) {
+    if (sVal <= -100) {
         signalBox.classList.add('critical');
-        viewCanvas.classList.add('low-quality');
+        
     } else {
         signalBox.classList.remove('critical');
-        viewCanvas.classList.remove('low-quality');
+        
     }
 
     document.getElementById('pos').textContent = `(${Math.round(x)}, ${Math.round(depth)}, ${Math.round(z)})`;
