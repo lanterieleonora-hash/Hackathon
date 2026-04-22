@@ -1,0 +1,139 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #020b14;
+  color: #e0f0ff;
+  overflow: hidden;
+}
+
+#container { display: flex; height: 100vh; }
+
+#view-container {
+  flex-grow: 1;
+  position: relative;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+#view {
+  background: #001820;
+  border: 2px solid #1f6fb2;
+  box-shadow: 0 0 30px rgba(0, 110, 255, 0.3);
+  transition: filter 0.3s ease; /* Transizione fluida per il disturbo */
+}
+
+/* Effetto disturbo video per segnale scarso */
+.low-quality {
+  filter: contrast(0.8) brightness(1.2) blur(1px) grayscale(0.2);
+  animation: signal-jitter 0.15s infinite;
+}
+
+@keyframes signal-jitter {
+  0% { transform: translate(0,0); }
+  33% { transform: translate(1px, -1px); }
+  66% { transform: translate(-1px, 1px); }
+  100% { transform: translate(0,0); }
+}
+
+#camera-label {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 8px 15px;
+  border-left: 5px solid #e74c3c;
+  font-weight: bold;
+  z-index: 10;
+}
+
+#telemetry {
+  width: 320px;
+  padding: 25px;
+  background: #102a43;
+  border-left: 2px solid #243b53;
+}
+
+.data-box {
+  margin-bottom: 12px;
+  padding: 10px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 4px;
+  border-left: 3px solid #1f6fb2;
+  transition: 0.3s;
+}
+
+/* Colore rosso per dati critici */
+.critical {
+  border-left-color: #ff4444 !important;
+  color: #ff4444;
+  font-weight: bold;
+}
+
+#emergencyBtn {
+  width: 100%;
+  margin-top: 15px;
+  padding: 12px;
+  background: #e74c3c;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#emergencyPanel {
+  margin-top: 15px;
+  padding: 15px;
+  background: #1c3d5a;
+  border: 1px solid #ffaa00;
+}
+
+.hidden { display: none; }
+
+#instructions {
+  position: absolute;
+  bottom: 30px;
+  background: rgba(0,0,0,0.7);
+  padding: 10px 20px;
+  border-radius: 30px;
+  z-index: 10;
+}
+
+@keyframes alarm-border {
+  0% { box-shadow: inset 0 0 50px rgba(231, 76, 60, 0); }
+  50% { box-shadow: inset 0 0 50px rgba(231, 76, 60, 0.6); }
+  100% { box-shadow: inset 0 0 50px rgba(231, 76, 60, 0); }
+}
+
+.emergency-vibe {
+  animation: alarm-border 1s infinite;
+}
+
+/* ... resto del CSS invariato ... */
+
+#view {
+  background: #001820;
+  border: 2px solid #1f6fb2;
+  box-shadow: 0 0 30px rgba(0, 110, 255, 0.3);
+  image-rendering: auto; /* Default */
+  transition: filter 0.5s ease;
+}
+
+/* Effetto Bassa Risoluzione (Pixelated) */
+.low-quality {
+  /* Simuliamo la perdita di dettaglio con un blur leggero e un forte contrasto */
+  /* o un effetto che riduce la nitidezza dei bordi */
+  filter: blur(2px) contrast(1.2) brightness(1.1);
+  
+  /* Se il browser lo supporta, questo rende i pixel più evidenti */
+  image-rendering: pixelated; 
+  image-rendering: crisp-edges;
+}
+
+.critical {
+  border-left-color: #ff4444 !important;
+  color: #ff4444;
+  font-weight: bold;
+}
